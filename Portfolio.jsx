@@ -3,10 +3,12 @@ import { useState, useEffect, useRef } from "react";
 const FONT_URL =
   "https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap";
 
+  // Image paths (served from /public/images/)
 const IMG = {
   logo:      "/images/logo.webp",
   heroPhoto: "/images/moi-tech.webp",
   teaching:  "/images/moi-teaching.webp",
+  favicon:  "/images/favicon.webp",
   logos: {
     city:  "/images/logos/logo-city.webp",
     edmi:  "/images/logos/logo-edmi.webp",
@@ -39,12 +41,13 @@ const IconClose = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="no
 const IconChevL = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>;
 const IconChevR = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>;
 
+// ─── BILINGUAL CONTENT ──────────────────────────────────────────────────────
 const C = {
   fr: {
     nav: ["À propos","Compétences","Projets","Expérience","Enseignement","Formation","Publications","Certifications","Contact"],
     navIds: ["about","skills","projects","experience","teaching","education","publications","certifications","contact"],
     hero: { tag:"// ingénieur IA · doctorant · enseignant · full stack", greeting:"Bonjour, je suis", name:"Miandrisoa Hoby", sur:"RANDRIATSARAFARA", title:"Ingénieur IA & Doctorant en Informatique", sub:"Spécialisé en vision par ordinateur, je transforme des problèmes complexes en solutions intelligentes — alliant recherche avancée, enseignement universitaire et ingénierie logicielle.", cta1:"Voir mes projets", cta2:"Me contacter", location:"Fianarantsoa / Antananarivo", brand:"CapriAI · Bi'hOuX" },
-    about: { title:"À propos", text:"Doctorant à l'École Doctorale de Modélisation Informatique (EDMI) de l'Université de Fianarantsoa. Ingénieur en informatique spécialisé en traitement d'images et vision par ordinateur. Enseignant universitaire et développeur full stack, principalement en Java, tout en restant ouvert à d'autres langages et technologies.", recent:"Parcours & activités récentes", items:["Doctorant — EDMI, Université de Fianarantsoa","Master 2 Recherche (ENI) — 2024","Licence professionnelle (ENI) — 2021","Stage majeur : Reconnaissance en temps réel des billets malagasy (GloreIA-LIMAD)"], stats:[{v:"5+",l:"Ans d'expérience"},{v:"3",l:"Langues parlées"},{v:"15+",l:"Technologies"},{v:"2027",l:"Fin de thèse"}], langs:["🇲🇬 Malgache","🇫🇷 Français","us Anglais"], interests:["Voyages","Taekwondo","Basketball","Natation","Lecture","Échecs","Jeux vidéo"], langLabel:"Langues", interestsLabel:"Centres d'intérêt", inActionLabel:"En action" },
+    about: { title:"À propos", text:"Doctorant à l'École Doctorale de Modélisation Informatique (EDMI) de l'Université de Fianarantsoa. Ingénieur en informatique spécialisé en traitement d'images et vision par ordinateur. Enseignant universitaire et développeur full stack, principalement en Java, tout en restant ouvert à d'autres langages et technologies.", recent:"Parcours & activités récentes", items:["Doctorant — EDMI, Université de Fianarantsoa","Master 2 Recherche (ENI) — 2024","Licence professionnelle (ENI) — 2021","Stage majeur : Reconnaissance en temps réel des billets malagasy (GloreIA-LIMAD)"], stats:[{v:"5+",l:"Ans d'expérience"},{v:"3",l:"Langues parlées"},{v:"15+",l:"Technologies"},{v:"2027",l:"Fin de thèse"}], langs:["🇲🇬 Malgache","🇫🇷 Français","🇺🇸 Anglais"], interests:["Voyages","Taekwondo","Basketball","Natation","Lecture","Échecs","Jeux vidéo"], langLabel:"Langues", interestsLabel:"Centres d'intérêt", inActionLabel:"En action" },
     skills: { title:"Compétences", sub:"Compétences techniques et outils fréquemment utilisés", progLang:"Langages de programmation" },
     projects: { title:"Projets & Réalisations", sub:"Sélection de projets académiques, de recherche et professionnels" },
     exp: { title:"Expériences professionnelles" },
@@ -60,7 +63,7 @@ const C = {
     nav: ["About","Skills","Projects","Experience","Teaching","Education","Publications","Certifications","Contact"],
     navIds: ["about","skills","projects","experience","teaching","education","publications","certifications","contact"],
     hero: { tag:"// AI engineer · PhD candidate · lecturer · full-stack dev", greeting:"Hello, I'm", name:"Miandrisoa Hoby", sur:"RANDRIATSARAFARA", title:"AI Engineer & PhD Researcher in CS", sub:"Specializing in computer vision, I transform complex problems into intelligent solutions — combining advanced research, university teaching, and software engineering.", cta1:"View my projects", cta2:"Contact me", location:"Fianarantsoa / Antananarivo", brand:"CapriAI · Bi'hOuX" },
-    about: { title:"About", text:"PhD candidate at the Doctoral School of Computer Modeling (EDMI), University of Fianarantsoa. Computer science engineer specializing in image processing and computer vision. University lecturer and full-stack developer, primarily in Java, open to other languages and technologies.", recent:"Background & recent activities", items:["PhD candidate — EDMI, University of Fianarantsoa","Master 2 Research (ENI) — 2024","Professional Bachelor's (ENI) — 2021","Major internship: Real-time recognition of Malagasy banknotes (GloreIA-LIMAD)"], stats:[{v:"5+",l:"Years of experience"},{v:"3",l:"Languages spoken"},{v:"15+",l:"Technologies"},{v:"2027",l:"PhD completion"}], langs:["🇲🇬 Malagasy","🇫🇷 French","us English"], interests:["Travel","Taekwondo","Basketball","Swimming","Reading","Chess","Video games"], langLabel:"Languages", interestsLabel:"Interests", inActionLabel:"In action" },
+    about: { title:"About", text:"PhD candidate at the Doctoral School of Computer Modeling (EDMI), University of Fianarantsoa. Computer science engineer specializing in image processing and computer vision. University lecturer and full-stack developer, primarily in Java, open to other languages and technologies.", recent:"Background & recent activities", items:["PhD candidate — EDMI, University of Fianarantsoa","Master 2 Research (ENI) — 2024","Professional Bachelor's (ENI) — 2021","Major internship: Real-time recognition of Malagasy banknotes (GloreIA-LIMAD)"], stats:[{v:"5+",l:"Years of experience"},{v:"3",l:"Languages spoken"},{v:"15+",l:"Technologies"},{v:"2027",l:"PhD completion"}], langs: ["🇲🇬 Malagasy", "🇫🇷 French", "🇺🇸 English"], interests:["Travel","Taekwondo","Basketball","Swimming","Reading","Chess","Video games"], langLabel:"Languages", interestsLabel:"Interests", inActionLabel:"In action" },
     skills: { title:"Skills", sub:"Technical skills and tools frequently used", progLang:"Programming languages" },
     projects: { title:"Projects & Achievements", sub:"Selection of academic, research, and professional projects" },
     exp: { title:"Professional Experience" },
