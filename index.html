@@ -1,24 +1,104 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Miandrisoa Hoby RANDRIATSARAFARA — Ingénieur IA, Doctorant en Informatique, Enseignant universitaire et Développeur Full Stack à Madagascar." />
-    <meta name="author" content="Miandrisoa Hoby RANDRIATSARAFARA" />
-    <meta name="keywords" content="AI engineer, computer vision, YOLOv8, React, Spring Boot, Madagascar, doctorant, enseignant" />
-    <meta property="og:title" content="Miandrisoa Hoby RANDRIATSARAFARA — AI Engineer & PhD Researcher" />
-    <meta property="og:description" content="Ingénieur IA & Développeur Full Stack spécialisé en vision par ordinateur. Doctorant EDMI Fianarantsoa." />
+
+    <!-- ═══════════════════════════════════════════
+         TITLE & META DESCRIPTION
+         • Title : 50-60 caractères max
+         • Description : 150-160 caractères max
+    ═══════════════════════════════════════════ -->
+    <title>Miandrisoa Hoby – Développeur Full Stack | Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio de Randriatsarafara Miandrisoa Hoby, développeur Full Stack passionné. Projets React, Node.js, design web moderne. Disponible pour missions freelance."
+    />
+    <meta name="author" content="Randriatsarafara Miandrisoa Hoby" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="canonical" href="https://randriatsarafara-miandrisoa-hoby.vercel.app/" />
+
+    <!-- ═══════════════════════════════════════════
+         GOOGLE SEARCH CONSOLE – VÉRIFICATION
+    ═══════════════════════════════════════════ -->
+    <meta name="google-site-verification" content="b8dab59a93c0ae88" />
+
+    <!-- ═══════════════════════════════════════════
+         OPEN GRAPH – Facebook / LinkedIn / WhatsApp
+    ═══════════════════════════════════════════ -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://randriatsarafara-miandrisoa-hoby.netlify.app" />
-    <title>Miandrisoa Hoby RANDRIATSARAFARA — AI Engineer</title>
-    <style>
-      *,*::before,*::after{box-sizing:border-box}
-      html,body{margin:0;padding:0;background:#050B18;min-height:100vh}
-      #root{min-height:100vh}
-    </style>
+    <meta property="og:url" content="https://randriatsarafara-miandrisoa-hoby.vercel.app/" />
+    <meta property="og:title" content="Miandrisoa Hoby – Développeur Full Stack" />
+    <meta
+      property="og:description"
+      content="Portfolio de Randriatsarafara Miandrisoa Hoby, développeur Full Stack passionné. Projets React, Node.js, design web moderne."
+    />
+    <meta property="og:image" content="https://randriatsarafara-miandrisoa-hoby.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Portfolio Miandrisoa Hoby – Développeur Full Stack" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Portfolio MHR" />
+
+    <!-- ═══════════════════════════════════════════
+         TWITTER CARD
+    ═══════════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://randriatsarafara-miandrisoa-hoby.vercel.app/" />
+    <meta name="twitter:title" content="Miandrisoa Hoby – Développeur Full Stack" />
+    <meta
+      name="twitter:description"
+      content="Portfolio de Randriatsarafara Miandrisoa Hoby, développeur Full Stack. Projets React, Node.js, design web moderne."
+    />
+    <meta name="twitter:image" content="https://randriatsarafara-miandrisoa-hoby.vercel.app/og-image.png" />
+    <meta name="twitter:image:alt" content="Portfolio Miandrisoa Hoby – Développeur Full Stack" />
+
+    <!-- ═══════════════════════════════════════════
+         FAVICON & MANIFEST
+         → Mettez vos fichiers dans /public/
+    ═══════════════════════════════════════════ -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- ═══════════════════════════════════════════
+         PERFORMANCE – Preconnect / Preload
+         → Décommentez selon vos polices/CDN
+    ═══════════════════════════════════════════ -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" media="print" onload="this.media='all'" /> -->
+
+    <!-- ═══════════════════════════════════════════
+         JSON-LD – Données structurées Schema.org
+    ═══════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Randriatsarafara Miandrisoa Hoby",
+      "alternateName": "MHR",
+      "url": "https://randriatsarafara-miandrisoa-hoby.vercel.app/",
+      "jobTitle": "Développeur Full Stack",
+      "description": "Développeur Full Stack passionné par la création d'applications web modernes, performantes et accessibles avec React, Node.js et les technologies web actuelles.",
+      "image": "https://randriatsarafara-miandrisoa-hoby.vercel.app/og-image.png",
+      "sameAs": [
+        "https://github.com/bihoux"
+      ],
+      "knowsAbout": ["React", "Node.js", "JavaScript", "TypeScript", "Vite", "CSS", "SEO", "Développement Web"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "MG"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/main.jsx"></script>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

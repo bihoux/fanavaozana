@@ -1,0 +1,14 @@
+# robots.txt — https://randriatsarafara-miandrisoa-hoby.vercel.app/
+# Mis à jour : 2025-05
+
+# Autoriser tous les robots sur tout le site
+User-agent: *
+Allow: /
+
+# Bloquer les fichiers techniques inutiles pour le SEO
+Disallow: /src/
+Disallow: /.vercel/
+Disallow: /node_modules/
+
+# Sitemap XML
+Sitemap: https://randriatsarafara-miandrisoa-hoby.vercel.app/sitemap.xml

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <!--
+    Portfolio SPA (Single Page Application)
+    Page unique principale
+  -->
+  <url>
+    <loc>https://randriatsarafara-miandrisoa-hoby.vercel.app/</loc>
+    <lastmod>2025-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link
+      rel="alternate"
+      hreflang="fr"
+      href="https://randriatsarafara-miandrisoa-hoby.vercel.app/"
+    />
+  </url>
+
+  <!--
+    ╔══════════════════════════════════════════╗
+    ║  Si vous ajoutez des routes dans votre   ║
+    ║  SPA (react-router-dom), listez-les ici. ║
+    ║  Exemples :                              ║
+    ╚══════════════════════════════════════════╝
+
+  <url>
+    <loc>https://randriatsarafara-miandrisoa-hoby.vercel.app/projets</loc>
+    <lastmod>2025-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://randriatsarafara-miandrisoa-hoby.vercel.app/contact</loc>
+    <lastmod>2025-05-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  -->
+
+</urlset>
