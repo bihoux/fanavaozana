@@ -9,21 +9,6 @@ npm run dev       # http://localhost:5173
 npm run build     # génère dist/
 ```
 
-## 🌐 Déployer sur Netlify
-
-### Option 1 — Glisser-déposer
-```bash
-npm run build
-# Glisser le dossier dist/ sur app.netlify.com/drop
-```
-
-### Option 2 — GitHub
-1. Push ce repo sur GitHub
-2. Connecter sur Netlify → New site from Git
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-
-Le fichier `netlify.toml` est déjà configuré.
 
 ## 📁 Structure
 ```
@@ -37,7 +22,7 @@ portfolio/
 └── README.md
 ```
 
-## ✨ Fonctionnalités
+##  Fonctionnalités
 - 🌓 Mode sombre / clair
 - 🇫🇷🇬🇧 FR / EN bilingue
 - 📜 Défilement fluide
@@ -66,5 +51,4 @@ Tout est dans `Portfolio.jsx` :
 - `PUBLICATIONS` → articles
 - `CERTS` → certifications
 
----
 Built with React 18 + Vite + CSS-in-JS
