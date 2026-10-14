@@ -53,7 +53,7 @@ const C = {
     exp: { title:"Expériences professionnelles" },
     teaching: { title:"Enseignements universitaires", sub:"Activités d'enseignement en tant que doctorant-enseignant et vacataire" },
     edu: { title:"Formations & Diplômes" },
-    pub: { title:"Publications", type:"Article scientifique", status:"Manuscrit / version soumise", coAuthors:"Co-auteurs" },
+    pub: { title:"Publications", type:"Chapitre d'ouvrage scientifique", status:"Publié", statusSubmitted:"Manuscrit / version soumise", coAuthors:"Co-auteurs", readArticle:"Lire la publication", doiLabel:"DOI" },
     certs: { title:"Attestations & Certifications", sub:"Documents officiels — cliquez sur une carte pour voir le certificat en grand", viewCert:"Voir le certificat", prev:"Précédent", next:"Suivant" },
     contact: { title:"Contact", sub:"Contactez-moi pour toute information — réponse sous 48 h. Envoi possible aussi via WhatsApp.", name:"Nom", email:"Email", subject:"Sujet", message:"Message", send:"Envoyer", whatsapp:"WhatsApp" },
     footer:"Disponible pour nouvelles collaborations",
@@ -69,7 +69,7 @@ const C = {
     exp: { title:"Professional Experience" },
     teaching: { title:"University Teaching", sub:"Teaching activities as PhD lecturer and visiting lecturer" },
     edu: { title:"Education & Degrees" },
-    pub: { title:"Publications", type:"Scientific article", status:"Manuscript / submitted version", coAuthors:"Co-authors" },
+    pub: { title:"Publications", type:"Scientific book chapter", status:"Published", statusSubmitted:"Manuscript / submitted version", coAuthors:"Co-authors", readArticle:"Read the publication", doiLabel:"DOI" },
     certs: { title:"Certifications & Attestations", sub:"Official documents — click a card to view the full certificate", viewCert:"View certificate", prev:"Previous", next:"Next" },
     contact: { title:"Contact", sub:"Contact me for any information — reply within 48 h. Also reachable via WhatsApp.", name:"Name", email:"Email", subject:"Subject", message:"Message", send:"Send", whatsapp:"WhatsApp" },
     footer:"Open to new collaborations",
@@ -138,7 +138,11 @@ const EDUCATION = [
 ];
 
 const PUBLICATIONS = [
-  { title:"Reconnaissance en temps réel des billets malagasy (Ariary)", authors:"M. H. Randriatsarafara, V. M. Ratianantitra, T. Mahatody", year:"2025", color:"#00C8FF", tags:["YOLOv8","Computer Vision","Mobile AI","Python","Android"] },
+  { title:"Reconnaissance en temps réel des billets malagasy (Ariary)", authors:"M. H. Randriatsarafara, V. M. Ratianantitra, T. Mahatody", year:"2025", color:"#00C8FF", tags:["YOLOv8","Computer Vision","Mobile AI","Python","Android"],
+    published:true,
+    venue:{ fr:"Recent Advances in Information Systems — Actes de l'ICRAIS 2025, Springer (série Progress in IS)", en:"Recent Advances in Information Systems — Proceedings of ICRAIS 2025, Springer (Progress in IS series)" },
+    publisher:"Springer Nature",
+    doi:"10.1007/978-3-032-14099-9_3" },
 ];
 
 const CERTS = [
@@ -567,10 +571,19 @@ function Publications({ lang }) {
         <Reveal key={i} delay={i*80}>
           <div style={{ background:"var(--surface)", border:"1px solid var(--brd)", borderRadius:16, padding:"2rem", borderTop:`3px solid ${p.color}` }}>
             <div style={{ display:"flex", gap:"0.5rem", flexWrap:"wrap", marginBottom:"1rem" }}>
-              {[{lbl:`📄 ${c.type}`,col:p.color},{lbl:`⏳ ${c.status}`,col:"#F59E0B"},{lbl:`📅 ${p.year}`,col:p.color}].map((chip,j)=><span key={j} style={{ background:`${chip.col}12`, border:`1px solid ${chip.col}30`, color:chip.col, padding:"3px 12px", borderRadius:999, fontSize:"0.69rem", fontFamily:"'JetBrains Mono',monospace" }}>{chip.lbl}</span>)}
+              {[{lbl:`📄 ${c.type}`,col:p.color},p.published?{lbl:`✅ ${c.status}`,col:"#10B981"}:{lbl:`⏳ ${c.statusSubmitted||c.status}`,col:"#F59E0B"},{lbl:`📅 ${p.year}`,col:p.color}].map((chip,j)=><span key={j} style={{ background:`${chip.col}12`, border:`1px solid ${chip.col}30`, color:chip.col, padding:"3px 12px", borderRadius:999, fontSize:"0.69rem", fontFamily:"'JetBrains Mono',monospace" }}>{chip.lbl}</span>)}
             </div>
             <h3 style={{ fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:"1.1rem", color:"var(--txt)", lineHeight:1.4, marginBottom:"0.6rem" }}>{p.title}</h3>
-            <div style={{ fontSize:"0.83rem", color:"var(--muted)", marginBottom:"1.2rem" }}><span style={{ color:p.color, fontWeight:600 }}>{c.coAuthors}: </span>{p.authors}</div>
+            <div style={{ fontSize:"0.83rem", color:"var(--muted)", marginBottom:"0.4rem" }}><span style={{ color:p.color, fontWeight:600 }}>{c.coAuthors}: </span>{p.authors}</div>
+            {p.venue && <div style={{ fontSize:"0.8rem", color:"var(--muted)", fontStyle:"italic", marginBottom:"1.2rem" }}>{tr(p.venue,lang)}{p.publisher ? ` · ${p.publisher}` : ""}</div>}
+            {p.doi && (
+              <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer"
+                style={{ display:"inline-flex", alignItems:"center", gap:"0.5rem", marginBottom:"1.2rem", padding:"0.55rem 1rem", borderRadius:10, background:`${p.color}10`, border:`1px solid ${p.color}35`, color:p.color, textDecoration:"none", fontFamily:"'JetBrains Mono',monospace", fontSize:"0.75rem", fontWeight:600, transition:"all 0.25s" }}
+                onMouseEnter={e=>{e.currentTarget.style.background=`${p.color}20`;e.currentTarget.style.borderColor=`${p.color}60`;}}
+                onMouseLeave={e=>{e.currentTarget.style.background=`${p.color}10`;e.currentTarget.style.borderColor=`${p.color}35`;}}>
+                <IconExternal /> {c.doiLabel}: {p.doi} — {c.readArticle}
+              </a>
+            )}
             <div style={{ display:"flex", alignItems:"center", gap:"1.5rem", flexWrap:"wrap" }}>
               <div style={{ display:"flex", gap:"0.4rem", flexWrap:"wrap" }}>{p.tags.map((t,i)=><Badge key={i} text={t} color={p.color}/>)}</div>
               <div style={{ display:"flex", gap:"0.75rem", alignItems:"center" }}>
